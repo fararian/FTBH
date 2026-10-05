@@ -1,9 +1,8 @@
 import requests
 import datetime
 import time
+from pymsgbox import *
 from bs4 import BeautifulSoup
-
-start_time = time.time()
 
 r = requests.get("https://www.fairfaxcounty.gov/housing/homeownership/FirstTimeHomebuyers")
 r.raise_for_status()
@@ -18,15 +17,14 @@ try:
     with open(fname, "r+", encoding="utf-8") as f:
         existing = f.read()
         f.seek(0, 2)  # move to end for appending
-        for text in links:
-            if text not in existing:
-                print(text)
-                f.write(text + " | " + dateAnnouced + "\n")
+        for newLisitng in links:
+            if newLisitng not in existing:
+                # print(newLisitng)
+                f.write(newLisitng + " | " + dateAnnouced + "\n")
+                message = alert(text=newLisitng, title='FTHB listing', button='OK')
+
 except FileNotFoundError:
     with open(fname, "w", encoding="utf-8") as f:
-        for text in links:
-            print(text)
-            f.write(text+"\n")
-
-end_time = time.time()
-print(f"Execution time: {end_time - start_time:.2f} seconds")
+        for newLisitng in links:
+            # print(newLisitng)
+            f.write(newLisitng+"\n")

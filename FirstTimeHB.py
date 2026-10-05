@@ -11,11 +11,11 @@ if fthb.status_code == 200:
     raw_text = soup.get_text(separator=" ", strip=True)
     new_hash = hashlib.sha1()
     new_hash.update(raw_text.encode("utf-8"))
-    print('new hash', new_hash.hexdigest())
+  #  print('new hash', new_hash.hexdigest())
 
     with open("fthbhash.txt") as currentHash:
         fileHash = currentHash.read()
-        print('old hash', fileHash)
+      #  print('old hash', fileHash)
 
         if fileHash == new_hash.hexdigest():
             message = alert(text='No new listing', title='FTBH listing', button='OK')
