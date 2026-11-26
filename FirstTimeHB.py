@@ -3,7 +3,7 @@ import hashlib
 from pymsgbox import *
 from bs4 import BeautifulSoup
 
-fthb = requests.get("")
+fthb = requests.get("https://www.fairfaxcounty.gov/housing/homeownership/FirstTimeHomebuyers")
 
 
 if fthb.status_code == 200:
