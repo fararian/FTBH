@@ -4,7 +4,7 @@ import time
 from pymsgbox import *
 from bs4 import BeautifulSoup
 
-r = requests.get("https://www.fairfaxcounty.gov/housing/homeownership/FirstTimeHomebuyers")
+r = requests.get("")
 r.raise_for_status()
 soup = BeautifulSoup(r.content, "html.parser")
 links = [h.get_text(strip=True) for h in soup.find_all("h2")]
